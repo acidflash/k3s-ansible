@@ -1,0 +1,22 @@
+---
+ansible_user: root
+server_init_args: >-
+  {% if groups['master'] | length > 1 %}
+    {% if ansible_host == hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) %}
+      --cluster-init
+    {% else %}
+      --server https://{{ hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) }}:6443
+    {% endif %}
+    --token {{ k3s_token }}
+  {% endif %}
+  {{ extra_server_args | default('') }}
+
+
+# See available releases: https://github.com/helm/helm/releases/
+helm_version: 'v3.2.1'
+helm_platform: linux
+helm_arch: amd64
+
+helm_repo_path: "https://get.helm.sh"
+
+helm_bin_path: /usr/local/bin/helm
