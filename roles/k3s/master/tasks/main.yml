@@ -209,20 +209,27 @@
   args:
     executable: /bin/bash
 
-#- name: Install Portainer repo
-#  ansible.builtin.shell: helm repo add portainer https://portainer.github.io/k8s/
-#  args:
-#    executable: /bin/bash
+- name: Install Portainer repo
+  ansible.builtin.shell: helm repo add portainer https://portainer.github.io/k8s/
+  run_once: true
+  args:
+    executable: /bin/bash
+  when: ansible_host == hostvars[groups['helminstall'][0]]['ansible_host'] | default(groups['helminstall'][0])
+    
 
-#- name: Install Portainer Namespace
-#  ansible.builtin.shell: helm install --create-namespace -n portainer portainer portainer/portainer --set service.type=LoadBalancer --set enterpriseEdition.enabled=true --set tls.force=true
-#  args:
-#    executable: /bin/bash
+- name: Install Portainer Namespace
+  ansible.builtin.shell: helm install --create-namespace -n portainer portainer portainer/portainer --set service.type=LoadBalancer --set enterpriseEdition.enabled=true --set tls.force=true
+  run_once: true
+  args:
+    executable: /bin/bash
+  when: ansible_host == hostvars[groups['helminstall'][0]]['ansible_host'] | default(groups['helminstall'][0]) 
 
-#- name: Install Portainer kubectl
-#  ansible.builtin.shell: kubectl apply -n portainer -f https://raw.githubusercontent.com/portainer/k8s/master/deploy/manifests/portainer/portainer-ee.yaml
-#  args:
-#    executable: /bin/bash
+- name: Install Portainer kubectl
+  ansible.builtin.shell: kubectl apply -n portainer -f https://raw.githubusercontent.com/portainer/k8s/master/deploy/manifests/portainer/portainer-ee.yaml
+  run_once: true
+  args:
+    executable: /bin/bash
+  when: ansible_host == hostvars[groups['helminstall'][0]]['ansible_host'] | default(groups['helminstall'][0])
 
 - name: Install nfs-common
   ansible.builtin.package:
@@ -240,18 +247,12 @@
     path: /lib/systemd/system/nfs-common.service
     state: absent
 
-- name: Enable and check  nfs-common service
+- name: Enable and check nfs-common service
   systemd:
     name: nfs-common
     daemon_reload: yes
     state: restarted
-    enabled: yes    
-
-- name: Configure nfs for cluster
-  become: yes
-  command: >-
-    k3s kubectl apply -f /var/lib/rancher/k3s/server/manifests/nfs.yaml
-  changed_when: true  
+    enabled: yes
 
 - name: Copy NFS service file
   template:
@@ -261,3 +262,13 @@
     group: root
     mode: 0755
 
+- name: Configure nfs for cluster
+  become: yes
+  command: >-
+    k3s kubectl apply -f /var/lib/rancher/k3s/server/manifests/nfs.yaml
+  changed_when: true  
+
+
+- name: Reboot a Linux machine 
+  reboot:
+    reboot_timeout: 1800
