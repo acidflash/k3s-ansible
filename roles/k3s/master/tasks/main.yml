@@ -255,7 +255,6 @@
   become: yes
   command: >-
     systemctl enable nfs-common
-  changed_when: true
 
 - name: Copy NFS service file
   template:

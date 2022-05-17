@@ -1,5 +1,5 @@
 #!/bin/bash
-helm install --create-namespace -n portainer portainer portainer/portainer --set service.type=LoadBalancer --set enterpriseEdition.enabled=true --set tls.force=true
+helm install --create-namespace -n portainer portainer portainer/portainer --set service.type=LoadBalancer --set enterpriseEdition.enabled=true --set tls.force=true --set persistence.storageClass=nfs
 sleep 3
 kubectl apply -n portainer -f https://raw.githubusercontent.com/portainer/k8s/master/deploy/manifests/portainer/portainer-ee.yaml
 sleep 3
