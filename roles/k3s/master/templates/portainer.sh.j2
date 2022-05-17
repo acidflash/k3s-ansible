@@ -1,0 +1,8 @@
+#!/bin/bash
+helm install --create-namespace -n portainer portainer portainer/portainer --set service.type=LoadBalancer --set enterpriseEdition.enabled=true --set tls.force=true
+sleep 3
+kubectl apply -n portainer -f https://raw.githubusercontent.com/portainer/k8s/master/deploy/manifests/portainer/portainer-ee.yaml
+sleep 3
+PORTAINER_IP="$(k3s kubectl -n portainer get services portainer  --output jsonpath='{.status.loadBalancer.ingress[0].ip}')"
+sleep 3
+echo $PORTAINER_IP

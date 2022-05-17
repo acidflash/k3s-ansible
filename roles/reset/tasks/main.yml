@@ -45,6 +45,7 @@
     - /var/lib/rancher/k3s
     - /var/lib/rancher/k3s/server/manifests/nfs.yaml
     - /lib/systemd/system/nfs-common.service
+    - /root/portainer.sh
 
 - name: daemon_reload
   systemd:

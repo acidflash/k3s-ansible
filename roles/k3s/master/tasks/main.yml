@@ -211,22 +211,23 @@
 
 - name: Install Portainer repo
   ansible.builtin.shell: helm repo add portainer https://portainer.github.io/k8s/
-  run_once: true
   args:
     executable: /bin/bash
   when: ansible_host == hostvars[groups['helminstall'][0]]['ansible_host'] | default(groups['helminstall'][0])
-    
 
-- name: Install Portainer Namespace
-  ansible.builtin.shell: helm install --create-namespace -n portainer portainer portainer/portainer --set service.type=LoadBalancer --set enterpriseEdition.enabled=true --set tls.force=true
-  run_once: true
+- name: Update Portainer repo
+  ansible.builtin.shell: helm repo update
   args:
     executable: /bin/bash
-  when: ansible_host == hostvars[groups['helminstall'][0]]['ansible_host'] | default(groups['helminstall'][0]) 
+  when: ansible_host == hostvars[groups['helminstall'][0]]['ansible_host'] | default(groups['helminstall'][0])
 
-- name: Install Portainer kubectl
-  ansible.builtin.shell: kubectl apply -n portainer -f https://raw.githubusercontent.com/portainer/k8s/master/deploy/manifests/portainer/portainer-ee.yaml
-  run_once: true
+- name: copy portianer script
+  template: 
+    src: portainer.sh.j2 
+    dest: "/root/portainer.sh"
+
+- name: Make exceuteble
+  ansible.builtin.shell: chmod +x /root/portainer.sh
   args:
     executable: /bin/bash
   when: ansible_host == hostvars[groups['helminstall'][0]]['ansible_host'] | default(groups['helminstall'][0])
@@ -236,23 +237,25 @@
     name: nfs-common
     state: present 
 
-- name: Remove mask on nfs-common
-  ansible.builtin.systemd:
-    name: nfs-common
-    enabled: yes
-    masked: no
-
-- name: delete a file (or symlink) if it exists
+- name: Remove symlink
   file:
-    path: /lib/systemd/system/nfs-common.service
-    state: absent
+   path: "/lib/systemd/system/nfs-common.service"
+   state: absent
 
-- name: Enable and check nfs-common service
+- name: daemon_reload
   systemd:
-    name: nfs-common
     daemon_reload: yes
-    state: restarted
-    enabled: yes
+
+- name: Start service nfs-common, if not started
+  ansible.builtin.service:
+    name: nfs-common
+    state: started
+
+- name: Enable nfs-common
+  become: yes
+  command: >-
+    systemctl enable nfs-common
+  changed_when: true
 
 - name: Copy NFS service file
   template:
@@ -266,9 +269,5 @@
   become: yes
   command: >-
     k3s kubectl apply -f /var/lib/rancher/k3s/server/manifests/nfs.yaml
-  changed_when: true  
-
-
-- name: Reboot a Linux machine 
-  reboot:
-    reboot_timeout: 1800
+  changed_when: true
+  when: ansible_host == hostvars[groups['helminstall'][0]]['ansible_host'] | default(groups['helminstall'][0])
