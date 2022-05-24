@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: test
+  name: nfs
 spec:
   capacity:
-    storage: 50Gi
+    storage: {{ nfs_server_size }}
   accessModes:
   - ReadWriteMany
   nfs:
-    path: /mnt/kuben
-    server: 192.168.30.242
+    path: {{ nfs_server_path }}
+    server: {{ nfs_server_ip }}
   persistentVolumeReclaimPolicy: Retain
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
@@ -21,6 +21,6 @@ spec:
   repo: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
   targetNamespace: default
   set:
-    nfs.server: 192.168.30.242
-    nfs.path: /mnt/kuben
+    nfs.server: {{ nfs_server_ip }}
+    nfs.path: {{ nfs_server_path }}
     storageClass.name: nfs
