@@ -4,5 +4,5 @@ sleep 3
 kubectl apply -n portainer -f https://raw.githubusercontent.com/portainer/k8s/master/deploy/manifests/portainer/portainer-ee.yaml
 sleep 3
 PORTAINER_IP="$(k3s kubectl -n portainer get services portainer  --output jsonpath='{.status.loadBalancer.ingress[0].ip}')"
-sleep 3
+sleep 10
 echo $PORTAINER_IP
