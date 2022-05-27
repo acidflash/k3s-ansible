@@ -24,6 +24,9 @@
     - /var/lib/kubelet
     - /run/netns
     - /var/lib/rancher/k3s
+    - /var/lib/kubelet/pods
+    - /var/lib/kubelet/plugins
+    - /run/netns/cni-
   loop_control:
     loop_var: mounted_fs
 
@@ -41,8 +44,14 @@
     - "{{ systemd_dir }}/k3s.service"
     - "{{ systemd_dir }}/k3s-node.service"
     - /etc/rancher/k3s
+    - /run/k3s
+    - /run/flannel
+    - /etc/rancher/
     - /var/lib/kubelet
     - /var/lib/rancher/k3s
+    - /var/lib/rancher/
+    - /usr/local/bin/k3s
+    - /var/lib/cni/
     - /var/lib/rancher/k3s/server/manifests/nfs.yaml
     - /lib/systemd/system/nfs-common.service
     - /root/portainer.sh
@@ -50,3 +59,7 @@
 - name: daemon_reload
   systemd:
     daemon_reload: yes
+
+- name: Reboot and wait for node to come back up
+  reboot:
+    reboot_timeout: 3600
