@@ -11,11 +11,11 @@ system_timezone: "Europe/Stockholm"
 flannel_iface: "ens192"
 
 # apiserver_endpoint is virtual ip-address which will be configured on each master
-apiserver_endpoint: "192.168.2.200"
+apiserver_endpoint: "192.168.230.200"
 
 # k3s_token is required  masters can talk together securely
 # this token should be alpha numeric only
-k3s_token: "jalksd7819jnklcxnzyeor23"
+k3s_token: "asdjkasd123-123123k123-123"
 
 # change these to your liking, the only required one is--no-deploy servicelb
 extra_server_args: "--no-deploy servicelb --no-deploy traefik --write-kubeconfig-mode 644 --kube-apiserver-arg default-not-ready-toleration-seconds=30 --kube-apiserver-arg default-unreachable-toleration-seconds=30 --kube-controller-arg node-monitor-period=20s --kube-controller-arg node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s"
@@ -29,9 +29,9 @@ metal_lb_speaker_tag_version: "v0.12.1"
 metal_lb_controller_tag_version: "v0.12.1"
 
 # metallb ip range for load balancer
-metal_lb_ip_range: "192.168.2.150-192.168.2.160"
+metal_lb_ip_range: "192.168.230.80-192.168.230.90"
 
 # NFS server for env
 nfs_server_ip: "192.168.0.250"
-nfs_server_path: "/kubernetes"
-nfs_server_size: "900Gi"
+nfs_server_path: "/"
+nfs_server_size: "50Gi"
