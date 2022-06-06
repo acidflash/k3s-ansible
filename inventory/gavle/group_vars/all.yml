@@ -32,6 +32,6 @@ metal_lb_controller_tag_version: "v0.12.1"
 metal_lb_ip_range: "192.168.230.80-192.168.230.90"
 
 # NFS server for env
-nfs_server_ip: "192.168.0.250"
-nfs_server_path: "/"
-nfs_server_size: "50Gi"
+nfs_server_ip: "192.168.230.90"
+nfs_server_path: "/mnt/kubernetes"
+nfs_server_size: "500Gi"

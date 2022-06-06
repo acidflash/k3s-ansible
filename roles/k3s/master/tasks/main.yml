@@ -256,17 +256,8 @@
   command: >-
     systemctl enable nfs-common
 
-- name: Copy NFS service file
-  template:
-    src: "nfs.yaml.j2"
-    dest: "/var/lib/rancher/k3s/server/manifests/nfs.yaml"
-    owner: root
-    group: root
-    mode: 0755
-
-- name: Configure nfs for cluster
+- name: Install NFS storage
   become: yes
   command: >-
-    k3s kubectl apply -f /var/lib/rancher/k3s/server/manifests/nfs.yaml
-  changed_when: true
+     helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner --set nfs.server=192.168.230.90 --set nfs.path=/mnt/kubernetes --set storageClass.accessModes=ReadWriteMany
   when: ansible_host == hostvars[groups['helminstall'][0]]['ansible_host'] | default(groups['helminstall'][0])
