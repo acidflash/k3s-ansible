@@ -11,9 +11,8 @@ server_init_args: >-
   {% endif %}
   {{ extra_server_args | default('') }}
 
-
 # See available releases: https://github.com/helm/helm/releases/
-helm_version: 'v3.2.1'
+helm_version: 'v3.9.2'
 helm_platform: linux
 helm_arch: amd64
 

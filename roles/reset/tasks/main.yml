@@ -9,7 +9,6 @@
     - k3s
     - k3s-node
     - k3s-init
-    - nfs-common
 
 - name: pkill -9 -f "k3s/data/[^/]+/bin/containerd-shim-runc"
   register: pkill_containerd_shim_runc
@@ -29,11 +28,6 @@
     - /run/netns/cni-
   loop_control:
     loop_var: mounted_fs
-
-- name: Install nfs-common
-  ansible.builtin.package:
-    name: nfs-common
-    state: absent
 
 - name: Remove service files, binaries and data
   file:
@@ -57,6 +51,7 @@
     - /root/portainer.sh
     - /root/.install
     - /root/nfs.sh
+
 
 - name: daemon_reload
   systemd:
