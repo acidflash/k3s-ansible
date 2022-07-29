@@ -1,1 +1,1 @@
-{"buildTargets":["clean","falkenberg","help","labnat","paris","resetFalkenberg","resetLabnat","resetParis"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
+{"buildTargets":["clean","gavle","help","resetGavle"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

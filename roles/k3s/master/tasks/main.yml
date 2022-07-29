@@ -256,8 +256,19 @@
   command: >-
     systemctl enable nfs-common
 
-- name: Install NFS storage
-  become: yes
-  command: >-
-     helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner --set nfs.server=192.168.0.250 --set nfs.path=/kubernetes --set storageClass.accessModes=ReadWriteMany
+- name: copy NFS script
+  template: 
+    src: nfs.sh.j2 
+    dest: "/root/nfs.sh"
+
+- name: Make exceuteble NFS
+  ansible.builtin.shell: chmod +x /root/nfs.sh
+  args:
+    executable: /bin/bash
+  when: ansible_host == hostvars[groups['helminstall'][0]]['ansible_host'] | default(groups['helminstall'][0])
+
+- name: Install NFS
+  ansible.builtin.shell: /root/nfs.sh
+  args:
+    executable: /bin/bash
   when: ansible_host == hostvars[groups['helminstall'][0]]['ansible_host'] | default(groups['helminstall'][0])

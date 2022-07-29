@@ -1,0 +1,10 @@
+#!/bin/bash
+FILE=/root/.install
+if test -f "$FILE";
+then
+echo "NFS already installed"
+else
+echo "Will install NFS"
+touch /root/.install
+helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner --set nfs.server=192.168.0.250 --set nfs.path=/kubernetes --set storageClass.accessModes=ReadWriteMany
+fi

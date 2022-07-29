@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jun  1 09:48:23 2022
+# Make data base, printed on Fri Jul 29 09:23:22 2022
 
 # Variables
 
@@ -20,8 +20,6 @@ make: *** No rule to make target 'all'.  Stop.
 WSLENV = ELECTRON_RUN_AS_NODE/w:WT_SESSION::WT_PROFILE_ID
 # default
 .SHELLFLAGS := -c
-# environment
-VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -43,23 +41,19 @@ GNUMAKEFLAGS :=
 # environment
 XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
 # environment
-VSCODE_VERBOSE_LOGGING = true
-# environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /mnt/c/Program Files/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/jonas/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/bin/remote-cli:/home/jonas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/Eclipse Adoptium/jre-17.0.2.8-hotspot/bin:/mnt/c/Program Files/Oculus/Support/oculus-runtime:/mnt/c/Program Files (x86)/VMware/VMware Workstation/bin/:/mnt/c/Program Files (x86)/Razer Chroma SDK/bin:/mnt/c/Program Files/Razer Chroma SDK/bin:/mnt/c/Program Files (x86)/Razer/ChromaBroadcast/bin:/mnt/c/Program Files/Razer/ChromaBroadcast/bin:/mnt/c/Program Files/Eclipse Adoptium/jre-11.0.13.8-hotspot/bin:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Windows/system32/config/systemprofile/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/jonas/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/IcedTeaWeb/WebStart/bin:/snap/bin
+PATH = /home/jonas/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/home/jonas/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/VMware/VMware Workstation/bin/:/mnt/c/Program Files/Eclipse Adoptium/jre-17.0.2.8-hotspot/bin:/mnt/c/Program Files/Oculus/Support/oculus-runtime:/mnt/c/Program Files (x86)/Razer Chroma SDK/bin:/mnt/c/Program Files/Razer Chroma SDK/bin:/mnt/c/Program Files (x86)/Razer/ChromaBroadcast/bin:/mnt/c/Program Files/Razer/ChromaBroadcast/bin:/mnt/c/Program Files/Eclipse Adoptium/jre-11.0.13.8-hotspot/bin:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Windows/system32/config/systemprofile/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/jonas/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/IcedTeaWeb/WebStart/bin:/snap/bin
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
-VSCODE_LOG_STACK = false
+ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-e9ba5dbc-9396-4871-a135-e3701466b31b.sock
-# environment
-VSCODE_SERVER_TAR = /mnt/c/Users/jonas/AppData/Local/Temp/vscode-remote-wsl/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/vscode-server-stable-linux-x64.tar.gz
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-49360f74-0920-4625-ada0-8b5a31e4f431.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -69,17 +63,15 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 DISPLAY = :0
 # environment
-VSCODE_PIPE_LOGGING = true
-# environment
 PWD = /home/jonas/k3s-ansible-master
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/493_interop
+WSL_INTEROP = /run/WSL/245_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
-WT_SESSION = ddfa0583-4a7c-47c2-b1b5-7ab0a297f361
+WT_SESSION = 826c593f-3a91-4194-bca8-e1cb78ebc63a
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -106,7 +98,7 @@ SHLVL = 1
 MAKE_VERSION := 4.2.1
 # environment
 USER = jonas
-# makefile (from 'Makefile', line 21)
+# makefile (from 'Makefile', line 9)
 .DEFAULT_GOAL := help
 # environment
 NAME = Code
@@ -157,11 +149,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_EXTHOST_WILL_SEND_SOCKET = true
-# environment
 WSL_DISTRO_NAME = Ubuntu
 # variable set hash-table stats:
-# Load=74/1024=7%, Rehash=0, Collisions=4/100=4%
+# Load=69/1024=7%, Rehash=0, Collisions=4/95=4%
 
 # Pattern-specific Variable Values
 
@@ -179,13 +169,6 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Files
 
-resetParis:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 17):
-	ansible-playbook reset.yml -i inventory/paris/hosts.ini
-
 # Not a target:
 all:
 #  Command line target.
@@ -201,38 +184,17 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-01 09:40:11.681114653
+#  Last modified 2022-06-05 16:14:39.658031652
 #  File has been updated.
 #  Successfully updated.
-
-labnat:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 2):
-	ansible-playbook site.yml -i inventory/labnat/hosts.ini
 
 help:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 20):
-	@grep -E '^[0-9a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
-
-resetFalkenberg:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 14):
-	ansible-playbook reset.yml -i inventory/falkenberg/hosts.ini
-
-paris:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 8):
-	ansible-playbook site.yml -i inventory/paris/hosts.ini
+	@grep -E '^[0-9a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 # Not a target:
 .DEFAULT:
@@ -246,34 +208,34 @@ clean:
 #  File does not exist.
 #  File has not been updated.
 
-falkenberg:
+resetGavle:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 5):
-	ansible-playbook site.yml -i inventory/falkenberg/hosts.ini
+	ansible-playbook reset.yml -i inventory/gavle/hosts.ini
 
-resetLabnat:
+gavle:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 11):
-	ansible-playbook reset.yml -i inventory/labnat/hosts.ini
+#  recipe to execute (from 'Makefile', line 2):
+	ansible-playbook site.yml -i inventory/gavle/hosts.ini
 
 # files hash-table stats:
-# Load=13/1024=1%, Rehash=0, Collisions=0/25=0%
+# Load=9/1024=1%, Rehash=0, Collisions=0/21=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 36 / storage = 346 B / avg = 9 B
-# current buf: size = 8162 B / used = 346 B / count = 36 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 32 / storage = 300 B / avg = 9 B
+# current buf: size = 8162 B / used = 300 B / count = 32 / avg = 9 B
 
-# strcache performance: lookups = 49 / hit rate = 26%
+# strcache performance: lookups = 41 / hit rate = 21%
 # hash-table stats:
-# Load=36/8192=0%, Rehash=0, Collisions=1/49=2%
-# Finished Make data base on Wed Jun  1 09:48:23 2022
+# Load=32/8192=0%, Rehash=0, Collisions=1/41=2%
+# Finished Make data base on Fri Jul 29 09:23:22 2022
 
  
